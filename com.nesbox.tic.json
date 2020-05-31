@@ -1,0 +1,51 @@
+{
+    "app-id": "com.nesbox.tic",
+    "runtime": "org.freedesktop.Platform",
+    "runtime-version": "19.08",
+    "sdk": "org.freedesktop.Sdk",
+    "command": "tic80",
+    "finish-args": [
+        "--socket=x11",
+        "--socket=wayland",
+        "--socket=pulseaudio",
+        "--filesystem=~/.local/share/com.nesbox.tic/"
+    ],
+    "modules": [
+        "shared-modules/glu/glu-9.json",
+        {
+            "name": "tic80-desktop-file",
+            "buildsystem": "simple",
+            "build-commands":  [
+                "install -Dm644 tic80.png /app/share/icons/hicolor/64x64/apps/com.nesbox.tic.png",
+                "install -Dm644 tic-80.desktop /app/share/applications/com.nesbox.tic.desktop"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "http://dev.nesbox.com/img/logo64.png",
+                    "dest-filename": "tic80.png",
+                    "sha512": "c26a26ed07a0c0a9a819a0768904a457f6b56ec6f3f32144b32344c87b6402e551537adae42ab69b3a07d8b3f822aa4efd7cae3415084d19a0f4945519e3e425"
+                },
+                {
+                    "type": "file",
+                    "path": "./tic-80.desktop"
+                }
+            ]
+        },
+        {
+            "name": "tic80-binary",
+            "buildsystem": "simple",
+            "build-commands": [
+                "tar xf tic80.tar.gz",
+                "install -Dm755 tic80 /app/bin/tic80"
+            ],
+            "sources": [
+                {
+                    "type": "file",
+                    "url": "http://dev.nesbox.com/files/master/2020.05.31/linux/tic80.tar.gz",
+                    "sha512": "de728bf656e5d32a2967e4ee12bf08c3355731e460ed17b04629d4cdf245c7e8b22d59abdfc7308c8658ab9858fe65e3b9e6bb7c90e5e1d530739e83ef642566"
+                }
+            ]
+        }
+    ]
+}
