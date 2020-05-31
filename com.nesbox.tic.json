@@ -22,7 +22,7 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "http://dev.nesbox.com/img/logo64.png",
+                    "url": "https://builds.tic80.com/img/logo64.png",
                     "dest-filename": "tic80.png",
                     "sha512": "c26a26ed07a0c0a9a819a0768904a457f6b56ec6f3f32144b32344c87b6402e551537adae42ab69b3a07d8b3f822aa4efd7cae3415084d19a0f4945519e3e425"
                 },
@@ -42,8 +42,8 @@
             "sources": [
                 {
                     "type": "file",
-                    "url": "http://dev.nesbox.com/files/master/2020.05.31/linux/tic80.tar.gz",
-                    "sha512": "de728bf656e5d32a2967e4ee12bf08c3355731e460ed17b04629d4cdf245c7e8b22d59abdfc7308c8658ab9858fe65e3b9e6bb7c90e5e1d530739e83ef642566"
+                    "url": "https://builds.tic80.com/files/master/2020.05.31/linux/tic80.tar.gz",
+                    "sha512": "c236c26f93a6aff3ec855fc6a4d20000d5986d75cf190bdb51953c975245e42db3d2abca4472b7e299d87b0a3878c60fa1e7e26038dc8b58a182946514cca8f6"
                 }
             ]
         }
