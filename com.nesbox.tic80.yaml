@@ -1,0 +1,31 @@
+app-id: com.nesbox.tic
+runtime: org.freedesktop.Platform
+runtime-version: '21.08'
+sdk: org.freedesktop.Sdk
+command: tic80
+rename-icon: 'tic80'
+rename-desktop-file: 'tic80'
+finish-args:
+  - '--share=network'
+  - '--socket=fallback-x11'
+  - '--socket=wayland'
+  - '--socket=pulseaudio'
+  - '--filesystem=~/.local/share/com.nesbox.tic/'
+modules:
+  - name: TIC-80
+    buildsystem: cmake
+    subdir: build
+    no-make-install: true
+    post-install:
+      - "echo ====POST_INSTALL===="
+      - "echo $PWD"
+      # - "install -Dm644 linux/tic80.png /app/"
+    config-opts:
+      - '-DBUILD_PRO=FALSE'
+    modules:
+      - shared-modules/glu/glu-9.json
+    sources:
+      - type: git
+        url: 'https://github.com/nesbox/TIC-80.git'
+        tag: 'v0.90.1723'
+        disable-shallow-clone: true
