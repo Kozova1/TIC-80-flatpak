@@ -1,10 +1,10 @@
-app-id: com.nesbox.tic
+app-id: com.nesbox.tic80
 runtime: org.freedesktop.Platform
 runtime-version: '21.08'
 sdk: org.freedesktop.Sdk
 command: tic80
 rename-icon: 'tic80'
-rename-desktop-file: 'tic80'
+rename-desktop-file: 'tic80.desktop'
 finish-args:
   - '--share=network'
   - '--socket=fallback-x11'
@@ -13,19 +13,23 @@ finish-args:
   - '--filesystem=~/.local/share/com.nesbox.tic/'
 modules:
   - name: TIC-80
-    buildsystem: cmake
-    subdir: build
-    no-make-install: true
-    post-install:
-      - "echo ====POST_INSTALL===="
-      - "echo $PWD"
-      # - "install -Dm644 linux/tic80.png /app/"
-    config-opts:
-      - '-DBUILD_PRO=FALSE'
+    buildsystem: simple
+    build-commands:
+      - install -Dm755 tic80 /app/bin/tic80
+      - install -Dm644 tic80.desktop /app/share/applications/tic80.desktop
+      - install -Dm644 tic80.png /app/share/icons/hicolor/256x256/apps/tic80.png
     modules:
       - shared-modules/glu/glu-9.json
     sources:
-      - type: git
-        url: 'https://github.com/nesbox/TIC-80.git'
-        tag: 'v0.90.1723'
-        disable-shallow-clone: true
+      - type: archive
+        archive-type: zip
+        url: 'https://github.com/nesbox/TIC-80/releases/download/v0.90.1723/tic80-v0.90-linux.zip'
+        sha256: 72cd58e01471a8b7ce268db21b08bf8a13b5089853b026a0216ced32249e9a23
+      - type: file
+        url: 'https://github.com/nesbox/TIC-80/raw/master/build/linux/tic80.png'
+        sha256: 2b79f7f2a0be9c2f270c143669647db81a0fb02ebb3a01f3df1f468515b9348c
+        dest-filename: tic80.png
+      - type: file
+        url: 'https://raw.githubusercontent.com/nesbox/TIC-80/master/build/linux/tic80.desktop.in'
+        sha256: 01fbe66379f4f40161cc9e2d9c993ac93a36e68553594422b99b6b53cd5304cd
+        dest-filename: tic80.desktop
